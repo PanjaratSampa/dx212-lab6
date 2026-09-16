@@ -8,7 +8,7 @@ console.log(greet("Pong", "IT"));
 console.log(greet_modern("Pong", "IT"));
 
 const student = { name: "ฟ้า", faculty: "CITU", year: 2 };
-
+const { name, faculty } = student;
 const updated = { ...student, year: 3 }; 
  
 //console.log(student, updated);
@@ -28,20 +28,26 @@ for (const bus of buses) {
 const routes = buses.map(bus => bus.route);
 
 console.log(routes);
+const busMessages = buses.map(
+    bus => `${bus.route} มีผู้โดยสาร ${bus.passengers} คน`);
 
-const lateBuses = buses.filter(({late}) => late==true);
+console.log(busMessages);
+
+const lateBuses = buses.filter(({late}) => late===true);
 const heavyBuses = buses.filter(({passengers}) => passengers > 50);
 
 console.log(lateBuses);
 console.log(heavyBuses);
 
 const totalPassengers = buses.reduce(
-    (total, { passengers }) => total + passengers, 0
-);
+    (total, { passengers }) => total + passengers, 0);
 
 const totalPassengersOfHeavyBuses = heavyBuses.reduce(
-    (total, { passengers }) => total + passengers, 0
-);
+    (total, { passengers }) => total + passengers, 0);
+const totalLatePassengers = buses
+    .filter(({ late }) => late === true)
+    .reduce((total, { passengers }) => total + passengers, 0);
 
 console.log(totalPassengers);
 console.log(totalPassengersOfHeavyBuses);
+console.log(totalLatePassengers);
